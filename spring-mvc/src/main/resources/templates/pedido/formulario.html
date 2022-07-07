@@ -1,0 +1,63 @@
+<html>
+
+<!-- o head ta no arquivo base.html -->
+<head th:replace="~{base :: head}"></head>
+
+<body>
+	<!-- o logo ta no arquivo base.html -->
+	<div th:replace="~{base :: logo}"></div>
+	
+	<!-- o menu ta no arquivo base.html -->
+	<div th:replace="~{base :: menu}"></div>
+
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+
+		<div class="card">
+
+			<form th:object="${requisicaoNovoPedido}" class="card-body"
+				th:action="@{/pedido/novo}" method="POST">
+
+				<div class="form-group mb-2">
+					<label for="nomeProduto">Produto</label> <input
+						th:field="*{nomeProduto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="nome do produto"> <small>Informe
+						o nome do produto</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}">Erros
+						do nome do produto</div>
+				</div>
+
+				<div class="form-group mb-2">
+					<label for="urlDoProdoto">Url</label> <input
+						th:field="*{urlDoProdoto}" th:errorclass="is-invalid"
+						class="form-control" placeholder="url do produto"> <small>Procure
+						em site o produto desejado e cole a url da página aqui</small>
+					<div class="invalid-feedback" th:errors="*{urlDoProdoto}">Erros
+						da url do produto</div>
+				</div>
+
+				<div class="form-group mb-2">
+					<label for="urlDaImagem">Imagem</label> <input
+						th:field="*{urlDaImagem}" th:errorclass="is-invalid"
+						class="form-control" placeholder="url da imagem"> <small>Procure
+						uma boa imagem do produto copie a url e cole aqui, para assim
+						ajudar ainda mais o comprador</small>
+					<div class="invalid-feedback" th:errors="*{urlDaImagem}">Erros
+						da url da imagem</div>
+				</div>
+
+				<div class="form-group mb-3">
+					<label for="descricao">Descrição</label>
+					<textarea th:field="*{descricao}" class="form-control "
+						placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+				</div>
+
+				<button class="btn btn-success" type="submit">Cadastrar</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+>
